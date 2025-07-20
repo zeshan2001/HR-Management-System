@@ -21,7 +21,7 @@ app.use(
 )
 
 app.get('/', (req, res) => {
-  res.send('Your app is connected . . . ')
+  res.render('index.ejs')
 })
 
 app.listen(PORT, () => {
