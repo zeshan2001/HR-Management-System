@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <%- include('../partials/_nav') %>
+    <h1>Create a new account!</h1>
+    <form action="/auth/sign-up" method="post">
+      <label for="profilePicture">Profile Picture: </label>
+      <input type="text" name="profilePicture" id="profilePicture" />
+      <br />
+      <label for="name">Name: </label>
+      <input type="text" name="name" id="name" />
+      <br />
+      <label for="role">Role: </label>
+      <input type="text" name="role" id="role" />
+      <br />
+      <label for="email">Email: </label>
+      <input type="text" name="email" id="email" />
+      <br />
+      <label for="password">Password: </label>
+      <input type="password" name="password" id="password" />
+      <br />
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" name="confirmPassword" id="confirmPassword" />
+      <br />
+      <label for="phone">Phone: </label>
+      <input type="text" name="phone" id="phone" />
+      <br />
+      <label for="salary">Salary: </label>
+      <input type="text" name="salary" id="salary" />
+      <br />
+      <button type="submit">Sign up</button>
+    </form>
+  </body>
+</html>
