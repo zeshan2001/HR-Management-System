@@ -17,13 +17,21 @@ exports.auth_signup_post = async (req, res) => {
   req.body.password = hashedPassword
 
   const user = await User.create(req.body)
-
   req.session.user = {
     email: user.email,
-    _id: user._id
+    _id: user._id,
+    role: user.role
   }
+
   req.session.save(() => {
-    res.redirect('/')
+    // res.redirect('/')
+    if(user.role === "hr"){
+      res.redirect('/roles/HR_index')
+    }else if(user.role === "employee"){
+      res.redirect('/roles/Employee_index')
+    } else {
+      res.send('How did we get here')
+    }
   })
 }
 
@@ -44,17 +52,34 @@ exports.auth_signin_post = async (req, res) => {
     return res.send(`Login failed. Please try again.`)
   }
 
-  req.session.user = {
+    req.session.user = {
     email: userInDatabase.email,
-    _id: userInDatabase._id
+    _id: userInDatabase._id,
+    role: userInDatabase.role
   }
+
   req.session.save(() => {
-    res.redirect('/')
+    // res.redirect('/')
+    if(user.role === "hr"){
+      res.redirect('/roles/HR_index')
+    }else if(user.role === "employee"){
+      res.redirect('/roles/Employee_index')
+    } else {
+      res.send('Your roll is empty')
+    }
   })
+
+  // req.session.user = {
+  //   email: userInDatabase.email,
+  //   _id: userInDatabase._id
+  // }
+  // req.session.save(() => {
+  //   res.redirect('/')
+  // })
 }
 
 exports.auth_signout_get = async (req, res) => {
   req.session.destroy(() => {
-    res.redirect('/')
+    res.redirect('/auth/sign-in')
   })
 }
