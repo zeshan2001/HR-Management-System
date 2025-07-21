@@ -6,6 +6,7 @@ const logger = require('morgan')
 const session = require('express-session')
 const authRoutes = require('./routes/auth')
 const usersRoutes = require('./routes/users')
+const projectsRoutes = require('./routes/projects')
 const passUserToView = require('./middlewares/pass-user-to-view')
 const isSignedIn = require('./middlewares/is-signed-in')
 const MongoStore = require('connect-mongo')
@@ -49,6 +50,7 @@ app.use('/auth', authRoutes)
 //   }
 // })
 app.use('/users', isSignedIn, usersRoutes)
+app.use('/projects', isSignedIn, projectsRoutes)
 
 app.listen(PORT, () => {
   console.log(`Running Server on Port ${PORT} . . . `)

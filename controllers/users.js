@@ -75,7 +75,6 @@ exports.users_create_post = async (req, res) => {
   } catch (error) {
     console.log(error)
   }
-
 }
 
 exports.users_edit_get = async (req, res) => {
