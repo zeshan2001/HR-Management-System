@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
 
 // Auth Routes
 app.use('/auth', authRoutes)
+// app.use('/roles',)
 
 app.listen(PORT, () => {
   console.log(`Running Server on Port ${PORT} . . . `)

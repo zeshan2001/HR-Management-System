@@ -60,9 +60,9 @@ exports.auth_signin_post = async (req, res) => {
 
   req.session.save(() => {
     // res.redirect('/')
-    if(user.role === "hr"){
+    if(req.session.user.role === "hr"){
       res.redirect('/roles/HR_index')
-    }else if(user.role === "employee"){
+    }else if(req.session.user.role === "employee"){
       res.redirect('/roles/Employee_index')
     } else {
       res.send('Your roll is empty')
