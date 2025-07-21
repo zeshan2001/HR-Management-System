@@ -5,7 +5,9 @@ const methodOverride = require('method-override')
 const logger = require('morgan')
 const session = require('express-session')
 const authRoutes = require('./routes/auth')
+const usersRoutes = require('./routes/users')
 const passUserToView = require('./middlewares/pass-user-to-view')
+const isSignedIn = require('./middlewares/is-signed-in')
 const MongoStore = require('connect-mongo')
 const app = express()
 
@@ -35,7 +37,18 @@ app.get('/', (req, res) => {
 
 // Auth Routes
 app.use('/auth', authRoutes)
-// app.use('/roles',)
+
+// 
+// app.use('/roles', isSignedIn, (req, res) => {
+//   if (req.session.user.role === 'hr') {
+//     res.render('roles/HR_index.ejs')
+//   } else if (req.session.user.role === 'employee'){
+//     res.render('roles/Employee_index.ejs')
+//   } else {
+//     res.send(`check req.session.user.role if it's value hr or employee`)
+//   }
+// })
+app.use('/users', isSignedIn, usersRoutes)
 
 app.listen(PORT, () => {
   console.log(`Running Server on Port ${PORT} . . . `)
