@@ -1,0 +1,11 @@
+<h2>Details of emp: </h2>
+<p>salary of emp: <%= userInfo.salary %></p>
+
+
+<form action="/users/<%= userInfo._id %>/edit">
+  <button>Edit</button>
+</form>
+
+<form action="/users/<%= userInfo._id %>?_method=DELETE" method="post">
+  <button type="submit">Delete</button>
+</form>

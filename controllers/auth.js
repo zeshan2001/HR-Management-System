@@ -26,9 +26,11 @@ exports.auth_signup_post = async (req, res) => {
   req.session.save(() => {
     // res.redirect('/')
     if(user.role === "hr"){
-      res.redirect('/roles/HR_index')
+      // res.redirect('/roles/HR_index')
+      res.redirect('/')
     }else if(user.role === "employee"){
-      res.redirect('/roles/Employee_index')
+      // res.redirect('roles/Employee_index')
+      res.redirect('/')
     } else {
       res.send('How did we get here')
     }
@@ -61,9 +63,11 @@ exports.auth_signin_post = async (req, res) => {
   req.session.save(() => {
     // res.redirect('/')
     if(req.session.user.role === "hr"){
-      res.redirect('/roles/HR_index')
+      // res.redirect('/roles/HR_index')
+      res.redirect('/')
     }else if(req.session.user.role === "employee"){
-      res.redirect('/roles/Employee_index')
+      // res.redirect('/roles/Employee_index')
+      res.redirect('/')
     } else {
       res.send('Your roll is empty')
     }

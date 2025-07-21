@@ -1,26 +1,14 @@
-<%- include('../partials/_header') %>
-
-<title>Sign Up</title>
-
 <%- include('../partials/_nav') %>
 
-<h1>Create a new account!</h1>
-<form action="/auth/sign-up" method="post">
+<form action="/users/new" method="post">
   <label for="profilePicture">Profile Picture: </label>
   <input type="text" name="profilePicture" id="profilePicture" />
   <br />
   <label for="name">Name: </label>
   <input type="text" name="name" id="name" />
   <br />
+  <input type="text" value="employee" name="role" id="role" hidden />
 
-  <label for="role">Role:</label>
-  <select name="role" id="role">
-    <option value="hr">HR</option>
-    <option value="employee">Employee</option>
-  </select>
-  <br />
-
-  <br />
   <label for="email">Email: </label>
   <input type="text" name="email" id="email" />
   <br />
@@ -34,8 +22,7 @@
   <input type="text" name="phone" id="phone" />
   <br />
   <label for="salary">Salary: </label>
-  <input type="text" name="salary" id="salary" />
+  <input type="number" name="salary" id="salary" />
   <br />
-  <button type="submit">Sign up</button>
+  <button type="submit">Add an Employee</button>
 </form>
-<%- include('../partials/_footer') %>

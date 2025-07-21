@@ -1,0 +1,28 @@
+<%- include('../partials/_nav') %>
+
+<form action="/users/<%= userInfo._id %>/edit?_method=PUT" method="post">
+  <label for="profilePicture">Profile Picture: </label>
+  <input type="text" name="profilePicture" id="profilePicture" value="<%= userInfo.profilePicture %>"/>
+  <br />
+  <label for="name">Name: </label>
+  <input type="text" name="name" id="name" value="<%= userInfo.name %>"/>
+  <br />
+  <!-- <input type="text" value="employee" name="role" id="role" hidden /> -->
+
+  <!-- <label for="email">Email: </label>
+  <input type="text" name="email" id="email" />
+  <br /> -->
+  <!-- <label for="password">Password: </label>
+  <input type="password" name="password" id="password" />
+  <br />
+  <label for="confirmPassword">Confirm Password:</label>
+  <input type="password" name="confirmPassword" id="confirmPassword" />
+  <br /> -->
+  <label for="phone">Phone: </label>
+  <input type="text" name="phone" id="phone" value="<%= userInfo.phone %>"/>
+  <br />
+  <label for="salary">Salary: </label>
+  <input type="number" name="salary" id="salary" value="<%= userInfo.salary %>"/>
+  <br />
+  <button type="submit">Update Employee</button>
+</form>
