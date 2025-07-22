@@ -29,7 +29,7 @@ exports.employees_new_get = async (req, res) => {
 
 exports.employees_create_post = async (req, res) => {
   try {
-    console.log(req.body)
+    req.body.hr = req.session.user._id
     const employee = await Employee.create(req.body)
     res.redirect('/employees')
   } catch (error) {
