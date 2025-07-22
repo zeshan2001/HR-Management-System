@@ -1,4 +1,5 @@
 const Project = require('../models/project')
+const Employee = require('../models/employee')
 
 exports.projects_index_get = async (req, res) => {
   try {
@@ -20,7 +21,10 @@ exports.projects_show_get = async (req, res) => {
 
 exports.projects_new_get = async (req, res) => {
   try {
-    res.render('projects/new.ejs')
+    const employees = await Employee.find()
+    console.log(employees)
+    
+    res.render('projects/new.ejs', {employees})
   } catch (error) {
     console.log(error)
   }
