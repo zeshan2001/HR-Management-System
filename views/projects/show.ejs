@@ -1,1 +1,11 @@
-<h1>Show projects</h1>
+<h2>Details of projects: </h2>
+<p>start date: <%= project.startDate %></p>
+
+
+<form action="/projects/<%= project._id %>/edit">
+  <button>Edit</button>
+</form>
+
+<form action="/projects/<%= project._id %>?_method=DELETE" method="post">
+  <button type="submit">Delete</button>
+</form>

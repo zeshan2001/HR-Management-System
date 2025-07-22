@@ -24,16 +24,7 @@ exports.auth_signup_post = async (req, res) => {
   }
 
   req.session.save(() => {
-    // res.redirect('/')
-    if(user.role === "hr"){
-      // res.redirect('/roles/HR_index')
-      res.redirect('/')
-    }else if(user.role === "employee"){
-      // res.redirect('roles/Employee_index')
-      res.redirect('/')
-    } else {
-      res.send('How did we get here')
-    }
+    res.redirect('/')
   })
 }
 
@@ -54,32 +45,15 @@ exports.auth_signin_post = async (req, res) => {
     return res.send(`Login failed. Please try again.`)
   }
 
-    req.session.user = {
+  req.session.user = {
     email: userInDatabase.email,
     _id: userInDatabase._id,
     role: userInDatabase.role
   }
 
   req.session.save(() => {
-    // res.redirect('/')
-    if(req.session.user.role === "hr"){
-      // res.redirect('/roles/HR_index')
-      res.redirect('/')
-    }else if(req.session.user.role === "employee"){
-      // res.redirect('/roles/Employee_index')
-      res.redirect('/')
-    } else {
-      res.send('Your roll is empty')
-    }
+    res.redirect('/')
   })
-
-  // req.session.user = {
-  //   email: userInDatabase.email,
-  //   _id: userInDatabase._id
-  // }
-  // req.session.save(() => {
-  //   res.redirect('/')
-  // })
 }
 
 exports.auth_signout_get = async (req, res) => {

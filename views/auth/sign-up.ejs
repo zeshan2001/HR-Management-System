@@ -6,20 +6,8 @@
 
 <h1>Create a new account!</h1>
 <form action="/auth/sign-up" method="post">
-  <label for="profilePicture">Profile Picture: </label>
-  <input type="text" name="profilePicture" id="profilePicture" />
-  <br />
   <label for="name">Name: </label>
   <input type="text" name="name" id="name" />
-  <br />
-
-  <label for="role">Role:</label>
-  <select name="role" id="role">
-    <option value="hr">HR</option>
-    <option value="employee">Employee</option>
-  </select>
-  <br />
-
   <br />
   <label for="email">Email: </label>
   <input type="text" name="email" id="email" />
@@ -29,12 +17,6 @@
   <br />
   <label for="confirmPassword">Confirm Password:</label>
   <input type="password" name="confirmPassword" id="confirmPassword" />
-  <br />
-  <label for="phone">Phone: </label>
-  <input type="text" name="phone" id="phone" />
-  <br />
-  <label for="salary">Salary: </label>
-  <input type="text" name="salary" id="salary" />
   <br />
   <button type="submit">Sign up</button>
 </form>

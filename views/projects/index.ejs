@@ -1,1 +1,13 @@
+<%- include('../partials/_nav') %>
 <h1>list of projects</h1>
+
+<% projects.forEach(project => { %>
+  <li>
+    <a href="/projects/<%= project._id %>">
+      <%= project.projectName %>
+    </a>
+  </li>
+<% }) %>
+
+<br>
+<a href="/projects/new">add an project</a>

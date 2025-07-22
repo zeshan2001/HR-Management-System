@@ -11,8 +11,8 @@ exports.projects_index_get = async (req, res) => {
 
 exports.projects_show_get = async (req, res) => {
   try {
-    const projectInfo = await Project.findById(req.params.projectId)
-    res.render('projects/show.ejs', { projectInfo })
+    const project = await Project.findById(req.params.projectId)
+    res.render('projects/show.ejs', { project })
   } catch (error) {
     console.log(error)
   }
@@ -28,8 +28,9 @@ exports.projects_new_get = async (req, res) => {
 
 exports.projects_create_post = async (req, res) => {
   try {
-    await Project.create(req.body)
-    res.redirect('/projects/index')
+    req.body.hr = req.session.user._id
+    const project = await Project.create(req.body)
+    res.redirect('/projects')
 
   } catch (error) {
     console.log(error)
@@ -37,16 +38,16 @@ exports.projects_create_post = async (req, res) => {
 }
 
 exports.projects_edit_get = async (req, res) => {
-  const projectInfo = await Project.findById(req.params.projectId)
-  res.render(`projects/edit.ejs`, {projectInfo})
+  const project = await Project.findById(req.params.projectId)
+  project.startDateFormatted = project.startDate.toISOString().split('T')[0]
+  project.deadLineFormatted = project.deadLine.toISOString().split('T')[0]
+  res.render(`projects/edit.ejs`, {project})
 }
 
 exports.projects_update_put = async (req, res) => {
-  console.log(req.body)
   const project = await Project.findByIdAndUpdate(req.params.projectId, req.body, {
     new:true
   })
-  console.log(`id: ${project._id}`)
   res.redirect(`/projects/${project._id}`)
 }
 
