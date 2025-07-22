@@ -1,1 +1,25 @@
+<%- include('../partials/_nav') %>
+
 <h1>new project</h1>
+
+<form action="/projects/new" method="post">
+
+  <label for="projectName">Name: </label>
+  <input type="text" name="projectName" id="projectName" />
+  <br />
+
+  <label for="startDate">start Date: </label>
+  <input type="date" name="startDate" id="startDate" />
+  <br />
+
+  <label for="deadLine">Deadline: </label>
+  <input type="date" name="deadLine" id="deadLine" />
+  <br />
+
+  <label for="budget">Buget: </label>
+  <input type="number" name="budget" id="budget" />
+  <br />
+
+  <button type="submit">Add a new project</button>
+
+</form>

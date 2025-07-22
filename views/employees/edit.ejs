@@ -1,11 +1,16 @@
 <%- include('../partials/_nav') %>
 
-<form action="/users/<%= userInfo._id %>/edit?_method=PUT" method="post">
+<form action="/employees/<%= employee._id %>/edit?_method=PUT" method="post">
   <label for="profilePicture">Profile Picture: </label>
-  <input type="text" name="profilePicture" id="profilePicture" value="<%= userInfo.profilePicture %>"/>
+  <input
+    type="text"
+    name="profilePicture"
+    id="profilePicture"
+    value="<%= employee.profilePicture %>"
+  />
   <br />
   <label for="name">Name: </label>
-  <input type="text" name="name" id="name" value="<%= userInfo.name %>"/>
+  <input type="text" name="name" id="name" value="<%= employee.name %>" />
   <br />
   <!-- <input type="text" value="employee" name="role" id="role" hidden /> -->
 
@@ -19,10 +24,23 @@
   <input type="password" name="confirmPassword" id="confirmPassword" />
   <br /> -->
   <label for="phone">Phone: </label>
-  <input type="text" name="phone" id="phone" value="<%= userInfo.phone %>"/>
+  <input type="text" name="phone" id="phone" value="<%= employee.phone %>" />
   <br />
   <label for="salary">Salary: </label>
-  <input type="number" name="salary" id="salary" value="<%= userInfo.salary %>"/>
+  <input
+    type="number"
+    name="salary"
+    id="salary"
+    value="<%= employee.salary %>"
+  />
+  <br />
+  <label for="department">Department: </label>
+  <input
+    type="text"
+    name="department"
+    id="department"
+    value="<%= employee.department %>"
+  />
   <br />
   <button type="submit">Update Employee</button>
 </form>

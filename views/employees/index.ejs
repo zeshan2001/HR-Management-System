@@ -1,0 +1,12 @@
+<%- include('../partials/_nav') %>
+<h1>list of employees</h1>
+<% employees.forEach(employee => { %>
+  <li>
+    <a href="/employees/<%= employee._id %>">
+      <%= employee.name %>
+    </a>
+  </li>
+<% }) %>
+
+<br>
+<a href="/employees/new">add an employee</a>
