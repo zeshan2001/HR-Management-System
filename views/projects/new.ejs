@@ -1,21 +1,20 @@
-<%- include('../partials/_nav') %>
-
+<%- include('../partials/_header') %>
 <h1>new project</h1>
 
 <form action="/projects/new" method="post">
-
+  
   <label for="projectName">Name: </label>
   <input type="text" name="projectName" id="projectName" />
   <br />
-
+  
   <label for="startDate">start Date: </label>
   <input type="date" name="startDate" id="startDate" />
   <br />
-
+  
   <label for="deadLine">Deadline: </label>
   <input type="date" name="deadLine" id="deadLine" />
   <br />
-
+  
   <label for="budget">Buget: </label>
   <input type="number" name="budget" id="budget" />
   <br /><br />
@@ -23,17 +22,17 @@
   <textarea type="text" name="description" id="description"></textarea>
   <br /><br />
   <!-- <label for="departments">Departments:</label>
-    <select name="departments[]" id="departments" multiple size="3">
-      <option value="Sales">Sales</option>
+  <select name="departments[]" id="departments" multiple size="3">
+    <option value="Sales">Sales</option>
       <option value="Marketing">Marketing</option>
       <option value="IT">IT</option>
-  </select> -->
+    </select> -->
 
 
   <fieldset>
-  <legend>employees</legend>
+    <legend>employees</legend>
   <% employees.forEach(emp => { %>
-
+    
     <label><input type="checkbox" name="employees" value="<%= emp._id %>"> <%= emp.name %></label>
 
   <% }) %>
@@ -44,3 +43,5 @@
   <button type="submit">Add a new project</button>
 
 </form>
+
+    <%- include('../partials/_footer') %>

@@ -1,12 +1,12 @@
-<%- include('../partials/_nav') %>
+<%- include('../partials/_header') %>
 
 <form action="/employees/<%= employee._id %>/edit?_method=PUT" method="post">
   <label for="profilePicture">Profile Picture: </label>
   <input
-    type="text"
-    name="profilePicture"
-    id="profilePicture"
-    value="<%= employee.profilePicture %>"
+  type="text"
+  name="profilePicture"
+  id="profilePicture"
+  value="<%= employee.profilePicture %>"
   />
   <br />
   <label for="name">Name: </label>
@@ -17,7 +17,7 @@
   <br />
   <label for="salary">Salary: </label>
   <input
-    type="number"
+  type="number"
     name="salary"
     id="salary"
     value="<%= employee.salary %>"
@@ -29,6 +29,8 @@
     <option value="Marketing" <%= employee.department === "Marketing"? "selected" : "" %> >Marketing</option>
     <option value="IT" <%= employee.department === "IT"? "selected" : "" %> >IT</option>
   </select>
-  <br />
+  <br />  
   <button type="submit">Update Employee</button>
 </form>
+
+<%- include('../partials/_footer') %>
