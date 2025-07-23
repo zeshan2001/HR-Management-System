@@ -10,6 +10,8 @@ const projectsRoutes = require('./routes/projects')
 const passUserToView = require('./middlewares/pass-user-to-view')
 const isSignedIn = require('./middlewares/is-signed-in')
 const MongoStore = require('connect-mongo')
+const Project = require('./models/project')
+const Employee = require('./models/employee')
 
 const app = express()
 app.use(express.static('public'))
@@ -35,9 +37,13 @@ app.use(
 
 app.use(passUserToView)
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   if (req.session.user) {
-    res.render('hr.ejs')
+    const employees = await Employee.find()
+    const projects = await Project.find()
+    console.log(employees.length)
+    console.log(projects.length)
+    res.render('hr.ejs', {countEmp: employees.length, countPro: projects.length})
   } else {
     res.render('index.ejs')
   }

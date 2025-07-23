@@ -4,7 +4,7 @@ const Employee = require('../models/employee')
 exports.employees_index_get = async (req, res) => {
   try {
     const employees = await Employee.find()
-    res.render('employees/index.ejs', {employees})
+    res.render('employees/index.ejs', { employees })
   } catch (error) {
     console.log(error)
   }
@@ -39,19 +39,36 @@ exports.employees_create_post = async (req, res) => {
 
 exports.employees_edit_get = async (req, res) => {
   const employee = await Employee.findById(req.params.employeeId)
-  res.render(`employees/edit.ejs`, {employee})
+  res.render(`employees/edit.ejs`, { employee })
 }
 
 exports.employees_update_put = async (req, res) => {
-  console.log(req.body)
-  const employee = await Employee.findByIdAndUpdate(req.params.employeeId, req.body, {
-    new:true
-  })
-  console.log(`id: ${employee._id}`)
-  res.redirect(`/employees/${employee._id}`)
+  try {
+    const currentEmployee = await Employee.findById(req.params.employeeId)
+    if (currentEmployee.hr.equals(req.session.user._id)) {
+      await currentEmployee.updateOne(req.body)
+      res.redirect(`/employees/${currentEmployee._id}`)
+    } else {
+      res.send("You don't have permission to do that.")
+    }
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
 }
 
-exports.employees_delete_delete = async (req,res) => {
-  await Employee.findByIdAndDelete(req.params.employeeId)
-  res.redirect("/employees")
+exports.employees_delete_delete = async (req, res) => {
+  try {
+    const employee = await Employee.findById(req.params.employeeId)
+
+    if (employee.hr.equals(req.session.user._id)) {
+      await employee.deleteOne()
+      res.redirect('/employees')
+    } else {
+      res.send("You don't have permission to do that.")
+    }
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
 }

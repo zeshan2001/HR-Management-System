@@ -3,23 +3,22 @@
 <div class="container my-5">
   <div class="d-flex justify-content-between align-items-center">
     <h1>list of projects</h1>
-    <a href="/projects/new" class="btn btn-outline-primary" role="button">add an project</a>
+    <a href="/projects/new" class="btn btn-outline-primary" role="button"
+      >add an project</a
+    >
   </div>
   <div class="row row-cols-3">
     <% projects.forEach((project, index) => { %>
-    <div class="col g-5">
-      <a class="text-decoration-none" href="/projects/<%= project._id %>" >
-        <div class="card" style="width: 18rem">
-          <div class="card-body">
-            <h5 class="card-title text-secondary-emphasis">
-              <%= project.projectName %>
-            </h5>
-            <p class="card-text text-secondary-emphasis mb-2">
-            </p>
-          </div>
+    <a class="text-decoration-none" href="/projects/<%= project._id %>">
+      <div class="card col m-3" style="max-width: 18rem">
+        <div class="card-header">
+          Due: <%= project.deadLine.toISOString().split('T')[0] %>
         </div>
-      </a>
-    </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= project.projectName %></h5>
+        </div>
+      </div>
+    </a>
     <% }) %>
   </div>
 </div>
