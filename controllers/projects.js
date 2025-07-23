@@ -22,8 +22,6 @@ exports.projects_show_get = async (req, res) => {
 exports.projects_new_get = async (req, res) => {
   try {
     const employees = await Employee.find()
-    console.log(employees)
-    
     res.render('projects/new.ejs', {employees})
   } catch (error) {
     console.log(error)
@@ -43,9 +41,12 @@ exports.projects_create_post = async (req, res) => {
 
 exports.projects_edit_get = async (req, res) => {
   const project = await Project.findById(req.params.projectId)
+  // branch aliii - added const employee
+  const employees = await Employee.find()
+  // branch aliii - added const employee
   project.startDateFormatted = project.startDate.toISOString().split('T')[0]
   project.deadLineFormatted = project.deadLine.toISOString().split('T')[0]
-  res.render(`projects/edit.ejs`, {project})
+  res.render(`projects/edit.ejs`, {project, employees})
 }
 
 exports.projects_update_put = async (req, res) => {
