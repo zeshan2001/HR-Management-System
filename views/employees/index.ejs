@@ -1,22 +1,18 @@
 <%- include('../partials/_header') %>
 
 <div class="container">
-    <a href="/employees/new">add an employee</a>
+  <a href="/employees/new">add an employee</a>
   <br />
 
   <h1 class="mb-4">list of employees</h1>
   <div class="row">
     <% employees.forEach(employee => { %>
 
-    <!-- <li>
-  <a href="/employees/<%= employee._id %>"> <%= employee.name %> </a>
-</li> -->
+    <li>
+      <a href="/employees/<%= employee._id %>"> <%= employee.name %> </a>
+    </li>
 
-
-
-
-
-<!-- 
+    <!-- 
     /.col-lg-4
     <div class="col-lg-4">
       <svg
