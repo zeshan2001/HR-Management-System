@@ -10,10 +10,30 @@ exports.projects_index_get = async (req, res) => {
   }
 }
 
+// exports.projects_show_get = async (req, res) => {
+//   try {
+//     const project = await Project.findById(req.params.projectId)
+//     res.render('projects/show.ejs', { project })
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
 exports.projects_show_get = async (req, res) => {
   try {
     const project = await Project.findById(req.params.projectId)
-    res.render('projects/show.ejs', { project })
+    const employeesN = await Employee.find()
+    let ee = []
+
+    for (let i = 0; i < project.employees.length; i++) {
+
+      for (let j = 0; j < employeesN.length; j++) {
+        project.employees[i]._id.equals(employeesN[j]._id)? ee.push(employeesN[j]) : null
+      }
+      
+    }
+
+    res.render('projects/show.ejs', { project, ee })
   } catch (error) {
     console.log(error)
   }
