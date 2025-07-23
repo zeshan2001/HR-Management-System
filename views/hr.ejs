@@ -1,8 +1,30 @@
 <%- include('./partials/_header') %>
-<h1>HR Page</h1>
+<div class="container my-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <h1 class="text-body-emphasis"><%= %></h1>
+    <p class="lead">
+      This is a simple Bootstrap jumbotron that sits within a
+      <code>.container</code>, recreated with built-in utility classes.
+    </p>
+  </div>
+</div>
+<div class="container">
+  <!-- <h1>HR Page</h1> -->
 
-<a href="/employees">Employees</a>
-<br>
-<a href="/projects">projects</a>
+  <!-- <a href="/employees">Employees</a>
+  <br />
+  <a href="/projects">projects</a> -->
+  <div class="row featurette my-5">
+    <div class="col-md-5 order-md-2 d-flex justify-content-between">
+      <div>
+        <h2 class="featurette-heading fw-normal lh-1">Projects</h2>
+      </div>
+
+      <div>
+        <h2 class="featurette-heading fw-normal lh-1">Projects</h2>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%- include('./partials/_footer') %>
