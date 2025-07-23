@@ -6,6 +6,7 @@ const projectSchema = new mongoose.Schema(
     startDate: { type: Date, required: true },
     deadLine: { type: Date, required: true },
     budget: { type: Number, required: true },
+    description: { type: String, required: true },
     employees: {
       type: [
         {
