@@ -1,6 +1,7 @@
-<h2>Details of emp: </h2>
-<p>salary of emp: <%= employee.salary %></p>
+<%- include('../partials/_header') %>
 
+<h2>Details of emp:</h2>
+<p>salary of emp: <%= employee.salary %></p>
 
 <form action="/employees/<%= employee._id %>/edit">
   <button>Edit</button>
@@ -9,3 +10,5 @@
 <form action="/employees/<%= employee._id %>?_method=DELETE" method="post">
   <button type="submit">Delete</button>
 </form>
+
+<%- include('../partials/_footer') %>

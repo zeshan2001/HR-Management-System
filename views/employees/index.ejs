@@ -1,4 +1,4 @@
-<%- include('../partials/_nav') %>
+<%- include('../partials/_header') %>
 <h1>list of employees</h1>
 <% employees.forEach(employee => { %>
   <li>
@@ -6,7 +6,8 @@
       <%= employee.name %>
     </a>
   </li>
-<% }) %>
-
-<br>
-<a href="/employees/new">add an employee</a>
+  <% }) %>
+  
+  <br>
+  <a href="/employees/new">add an employee</a>
+  <%- include('../partials/_footer') %>

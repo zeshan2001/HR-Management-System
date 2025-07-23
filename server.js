@@ -10,11 +10,14 @@ const projectsRoutes = require('./routes/projects')
 const passUserToView = require('./middlewares/pass-user-to-view')
 const isSignedIn = require('./middlewares/is-signed-in')
 const MongoStore = require('connect-mongo')
+
 const app = express()
+app.use(express.static('public'))
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const database = require('./config/db')
 
+// Middlewares
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(methodOverride('_method'))
