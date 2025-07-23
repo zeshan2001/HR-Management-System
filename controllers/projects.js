@@ -4,20 +4,11 @@ const Employee = require('../models/employee')
 exports.projects_index_get = async (req, res) => {
   try {
     const projects = await Project.find()
-    res.render('projects/index.ejs', {projects})
+    res.render('projects/index.ejs', { projects })
   } catch (error) {
     console.log(error)
   }
 }
-
-// exports.projects_show_get = async (req, res) => {
-//   try {
-//     const project = await Project.findById(req.params.projectId)
-//     res.render('projects/show.ejs', { project })
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
 
 exports.projects_show_get = async (req, res) => {
   try {
@@ -26,11 +17,11 @@ exports.projects_show_get = async (req, res) => {
     let ee = []
 
     for (let i = 0; i < project.employees.length; i++) {
-
       for (let j = 0; j < employeesN.length; j++) {
-        project.employees[i]._id.equals(employeesN[j]._id)? ee.push(employeesN[j]) : null
+        project.employees[i]._id.equals(employeesN[j]._id)
+          ? ee.push(employeesN[j])
+          : null
       }
-      
     }
 
     res.render('projects/show.ejs', { project, ee })
@@ -42,7 +33,7 @@ exports.projects_show_get = async (req, res) => {
 exports.projects_new_get = async (req, res) => {
   try {
     const employees = await Employee.find()
-    res.render('projects/new.ejs', {employees})
+    res.render('projects/new.ejs', { employees })
   } catch (error) {
     console.log(error)
   }
@@ -53,7 +44,6 @@ exports.projects_create_post = async (req, res) => {
     req.body.hr = req.session.user._id
     const project = await Project.create(req.body)
     res.redirect('/projects')
-
   } catch (error) {
     console.log(error)
   }
@@ -66,17 +56,36 @@ exports.projects_edit_get = async (req, res) => {
   // branch aliii - added const employee
   project.startDateFormatted = project.startDate.toISOString().split('T')[0]
   project.deadLineFormatted = project.deadLine.toISOString().split('T')[0]
-  res.render(`projects/edit.ejs`, {project, employees})
+  res.render(`projects/edit.ejs`, { project, employees })
 }
 
 exports.projects_update_put = async (req, res) => {
-  const project = await Project.findByIdAndUpdate(req.params.projectId, req.body, {
-    new:true
-  })
-  res.redirect(`/projects/${project._id}`)
+  try {
+    const currentProject = await Project.findById(req.params.projectId)
+    if (currentProject.hr.equals(req.session.user._id)) {
+      await currentProject.updateOne(req.body)
+      res.redirect(`/projects/${currentProject._id}`)
+    } else {
+      res.send("You don't have permission to do that.")
+    }
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
 }
 
-exports.projects_delete_delete = async (req,res) => {
-  await Project.findByIdAndDelete(req.params.projectId)
-  res.redirect("/projects")
+exports.projects_delete_delete = async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.projectId)
+
+    if (project.hr.equals(req.session.user._id)) {
+      await project.deleteOne()
+      res.redirect('/projects')
+    } else {
+      res.send("You don't have permission to do that.")
+    }
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
 }
