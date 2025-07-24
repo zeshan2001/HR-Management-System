@@ -3,7 +3,12 @@ const Employee = require('../models/employee')
 
 exports.employees_index_get = async (req, res) => {
   try {
-    const employees = await Employee.find()
+    const findEmployees = await Employee.find()
+    
+    const employees = findEmployees.filter((e)=> {
+      // console.log(e)
+      return e.hr._id.equals(req.session.user._id)
+    })
     res.render('employees/index.ejs', { employees })
   } catch (error) {
     console.log(error)

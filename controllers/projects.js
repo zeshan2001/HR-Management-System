@@ -3,7 +3,11 @@ const Employee = require('../models/employee')
 
 exports.projects_index_get = async (req, res) => {
   try {
-    const projects = await Project.find()
+    const findProjects = await Project.find()
+    const projects = findProjects.filter((e) => {
+      // console.log(e)
+      return e.hr._id.equals(req.session.user._id)
+    })
     res.render('projects/index.ejs', { projects })
   } catch (error) {
     console.log(error)

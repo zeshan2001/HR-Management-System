@@ -39,11 +39,26 @@ app.use(passUserToView)
 
 app.get('/', async (req, res) => {
   if (req.session.user) {
-    const employees = await Employee.find()
-    const projects = await Project.find()
+    const findEmployees = await Employee.find()
+    const employees = findEmployees.filter((e) => {
+      // console.log(e)
+      return e.hr._id.equals(req.session.user._id)
+    })
+
+    const findProjects = await Project.find()
+    const projects = findProjects.filter((e) => {
+      // console.log(e)
+      return e.hr._id.equals(req.session.user._id)
+    })
+
+    // const employees = await Employee.find()
+    // const projects = await Project.find()
     console.log(employees.length)
     console.log(projects.length)
-    res.render('hr.ejs', {countEmp: employees.length, countPro: projects.length})
+    res.render('hr.ejs', {
+      countEmp: employees.length,
+      countPro: projects.length
+    })
   } else {
     res.render('index.ejs')
   }
