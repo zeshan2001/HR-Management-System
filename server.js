@@ -1,25 +1,34 @@
 require('dotenv').config()
+// App requires
 const express = require('express')
+const app = express()
+//
+// DB requires
 const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')
+//
+// Middleware requires
 const methodOverride = require('method-override')
 const logger = require('morgan')
 const session = require('express-session')
+const passUserToView = require('./middlewares/pass-user-to-view')
+const isSignedIn = require('./middlewares/is-signed-in')
+//
+// Routes requires
 const authRoutes = require('./routes/auth')
 const employeesRoutes = require('./routes/employees')
 const projectsRoutes = require('./routes/projects')
-const passUserToView = require('./middlewares/pass-user-to-view')
-const isSignedIn = require('./middlewares/is-signed-in')
-const MongoStore = require('connect-mongo')
+//
+// Model requires
 const Project = require('./models/project')
 const Employee = require('./models/employee')
-
-const app = express()
-app.use(express.static('public'))
-
+//
+// app.use(express.static('public'))
+// DB Configs
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const database = require('./config/db')
-
-// Middlewares
+//
+// Middleware Configs
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(methodOverride('_method'))
@@ -34,9 +43,7 @@ app.use(
     })
   })
 )
-
 app.use(passUserToView)
-
 app.get('/', async (req, res) => {
   if (req.session.user) {
     const findEmployees = await Employee.find()
@@ -63,13 +70,13 @@ app.get('/', async (req, res) => {
     res.render('index.ejs')
   }
 })
-
-// Auth Routes
+//
+// Route Configs
 app.use('/auth', authRoutes)
-
 app.use('/employees', isSignedIn, employeesRoutes)
 app.use('/projects', isSignedIn, projectsRoutes)
-
+//
+// LIVE Port
 app.listen(PORT, () => {
   console.log(`Running Server on Port ${PORT} . . . `)
 })
