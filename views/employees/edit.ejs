@@ -3,12 +3,11 @@
 <div class="container">
   <main class="form-signin w-50 m-auto">
     <!--  -->
-    <form action="/employees/<%= employee._id %>/edit?_method=PUT" method="post">
+    <form action="/employees/<%= employee._id %>/edit?_method=PUT" method="post" enctype="multipart/form-data">
       <!--  -->
       <h1 class="h3 mb-3 fw-normal">Update Employee Info</h1>
       <!--  -->
 
-      <!-- CHANGE NEEDED -->
       <div class="form-floating mb-4">
         <input
         type="text"
@@ -19,8 +18,9 @@
         />
         <label for="profilePicture">Profile Picture: </label>
       </div>
-      <!-- CHANGE NEEDED -->  
       <!--  -->
+
+<input type="file" name="avatar" accept="image/*">
 
       <div class="form-floating mb-4">
         <input 

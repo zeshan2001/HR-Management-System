@@ -16,6 +16,7 @@ exports.projects_show_get = async (req, res) => {
     const employeesN = await Employee.find()
     let ee = []
 
+    // This is how we got the names of employees to show up in the ejs file.
     for (let i = 0; i < project.employees.length; i++) {
       for (let j = 0; j < employeesN.length; j++) {
         project.employees[i]._id.equals(employeesN[j]._id)
@@ -23,6 +24,7 @@ exports.projects_show_get = async (req, res) => {
           : null
       }
     }
+    // This is how we got the names of employees to show up in the ejs file.
 
     res.render('projects/show.ejs', { project, ee })
   } catch (error) {
