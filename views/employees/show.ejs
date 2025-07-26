@@ -28,15 +28,14 @@
   </table>
   
       <div class="d-flex justify-content-end align-items-center">
-        <form class="mx-5" action="/employees/<%= employee._id %>/edit">
+        <form class="mx-5" action="/employees/<%= employee._id %>/edit" method="get">
           <button class="btn btn-primary w-100 py-2" >Edit</button>
         </form>
 
         <form
           class=""
           action="/employees/<%= employee._id %>?_method=DELETE"
-          method="post"
-        >
+          method="post">
           <button class="btn btn-primary w-100 py-2" type="submit">Delete</button>
         </form>
       </div>
