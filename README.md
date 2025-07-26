@@ -27,11 +27,21 @@ An app designed for human resources use, the goal of app is to provide the abili
 
 **_Screenshots_**
 
-- [Wireframes](./public/Screenshots/wireframes.pdf)
+- Wireframes screenshots:
 
-- [Application](./public/Screenshots/application.pdf)
+ ![Wireframes](./public/Screenshots/wireframe1.jpg)
+ ![Wireframes](./public/Screenshots/wireframe2.jpg)
+ ![Wireframes](./public/Screenshots/wireframe3.jpg)
 
-- [ERD](./public/Screenshots/Blankdiagram-Page1(1).png)
+- Some Application screenshots:
+
+ ![Application](./public/Screenshots/appHrLandingPage.PNG)
+ ![Application](./public/Screenshots/appEmpList.PNG)
+ ![Application](./public/Screenshots/appEmpDetails.PNG)
+
+- ERD:
+
+ ![ERD](./public/Screenshots/erdDiagram.png)
 ---
 
 **_Credits_**
