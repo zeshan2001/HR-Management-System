@@ -4,9 +4,8 @@ const Employee = require('../models/employee')
 exports.employees_index_get = async (req, res) => {
   try {
     const findEmployees = await Employee.find()
-    
-    const employees = findEmployees.filter((e)=> {
-      return e.hr._id.equals(req.session.user._id)
+    const employees = findEmployees.filter((employee)=> {
+      return employee.hr._id.equals(req.session.user._id)
     })
     res.render('employees/index.ejs', { employees })
   } catch (error) {

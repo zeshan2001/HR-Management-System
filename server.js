@@ -23,7 +23,6 @@ const projectsRoutes = require('./routes/projects')
 const Project = require('./models/project')
 const Employee = require('./models/employee')
 
-// app.use(express.static('public'))
 // DB Configs
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const database = require('./config/db')

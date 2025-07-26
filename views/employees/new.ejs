@@ -2,7 +2,7 @@
 
 <div class="container">
   <main class="form-signin w-50 m-auto">
-    <form action="/employees/new" method="post">
+    <form action="/employees" method="post">
       <h1 class="h3 mb-3 fw-normal">Add a New Employee</h1>
       <div class="form-floating mb-4">
         <input
@@ -10,8 +10,7 @@
           class="form-control"
           id="floatingInput"
           placeholder="name@example.com"
-          name="email"
-        />
+          name="email"/>
         <label for="email">Email: </label>
       </div>
       <div class="form-floating mb-4">
@@ -20,8 +19,7 @@
           name="name"
           id="floatingInput"
           class="form-control"
-          placeholder="Name"
-        />
+          placeholder="Name"/>
         <label for="name">Name: </label>
       </div>
       <div class="form-floating mb-4">
@@ -30,8 +28,7 @@
           name="phone"
           id="floatingInput"
           class="form-control"
-          placeholder="Phone"
-        />
+          placeholder="Phone"/>
         <label for="floatingInput">Phone: </label>
       </div>
 
@@ -41,8 +38,7 @@
           name="salary"
           id="floatingInput"
           class="form-control"
-          placeholder="Salary"
-        />
+          placeholder="Salary"/>
         <label for="salary">Salary: </label>
       </div>
 
@@ -51,8 +47,7 @@
           class="form-select"
           name="department"
           id="department"
-          placeholder=" Choose Department..."
-        >
+          placeholder=" Choose Department...">
           <option value="Sales">Sales</option>
           <option value="Marketing">Marketing</option>
           <option value="IT">IT</option>
@@ -60,9 +55,7 @@
         <label for="Department">Department: </label>
       </div>
 
-      <button class="btn btn-primary w-100 py-2" type="submit">
-        Add an Employee
-      </button>
+      <button class="btn btn-primary w-100 py-2" type="submit">Add an Employee</button>
     </form>
   </main>
 </div>
