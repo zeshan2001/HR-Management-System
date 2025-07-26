@@ -6,7 +6,6 @@ exports.employees_index_get = async (req, res) => {
     const findEmployees = await Employee.find()
     
     const employees = findEmployees.filter((e)=> {
-      // console.log(e)
       return e.hr._id.equals(req.session.user._id)
     })
     res.render('employees/index.ejs', { employees })

@@ -2,38 +2,27 @@
 
 <div class="container">
   <main class="form-signin w-50 m-auto">
-    <!--  -->
     <form action="/employees/<%= employee._id %>/edit?_method=PUT" method="post" enctype="multipart/form-data">
-      <!--  -->
       <h1 class="h3 mb-3 fw-normal">Update Employee Info</h1>
-      <!--  -->
-
       <div class="form-floating mb-4">
         <input
         type="text"
         name="profilePicture"
         class="form-control"
         id="floatingInput"
-        value="<%= employee.profilePicture %>"
-        />
+        value="<%= employee.profilePicture %>"/>
         <label for="profilePicture">Profile Picture: </label>
       </div>
-      <!--  -->
-
-<input type="file" name="avatar" accept="image/*">
-
+      <input type="file" name="avatar" accept="image/*">
       <div class="form-floating mb-4">
         <input 
           type="text" 
           name="name" 
           id="floatingInput" 
           class="form-control"
-          value="<%= employee.name %>"
-        />
+          value="<%= employee.name %>"/>
         <label for="name">Name: </label>
       </div>
-      <!--  -->
-
       <div class="form-floating mb-4">
         <input 
           type="text" 
@@ -41,11 +30,9 @@
           class="form-control"            
           id="floatingInput" 
           value="<%= employee.phone %>" 
-        />
+          />
         <label for="phone">Phone: </label>
       </div>
-      <!--  -->
-
       <div class="form-floating mb-4">
         <input
           type="number"
@@ -62,19 +49,16 @@
           name="department" 
           class="form-select"
           id="department" 
-          value="<%= employee.department  %>"
-        >
+          value="<%= employee.department  %>">
           <option value="Sales" <%= employee.department === "Sales"? "selected" : "" %>>Sales</option>
           <option value="Marketing" <%= employee.department === "Marketing"? "selected" : "" %>>Marketing</option>
           <option value="IT" <%= employee.department === "IT"? "selected" : "" %>>IT</option>
         </select>      
         <label for="department">Department: </label>
       </div>
-      <!--  -->
 
       <button class="btn btn-primary w-100 py-2" type="submit">Update Employee</button>
     </form>
-    <!--  -->
   </main>
 </div>
 

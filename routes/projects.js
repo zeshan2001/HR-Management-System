@@ -16,7 +16,6 @@ router.delete('/:projectId', projecstCtrl.projects_delete_delete)
 // edit.ejs
 router.get('/:projectId/edit',projecstCtrl.projects_edit_get)
 router.put('/:projectId/edit', projecstCtrl.projects_update_put)
-// 
 
 module.exports = router
 

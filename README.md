@@ -31,6 +31,7 @@ An app designed for human resources use, the goal of app is to provide the abili
 
 - [Application](./public/Screenshots/application.pdf)
 
+- [ERD](./public/Screenshots/Blankdiagram-Page1(1).png)
 ---
 
 **_Credits_**

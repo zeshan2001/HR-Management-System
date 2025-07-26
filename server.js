@@ -2,32 +2,32 @@ require('dotenv').config()
 // App requires
 const express = require('express')
 const app = express()
-//
+
 // DB requires
 const mongoose = require('mongoose')
 const MongoStore = require('connect-mongo')
-//
+
 // Middleware requires
 const methodOverride = require('method-override')
 const logger = require('morgan')
 const session = require('express-session')
 const passUserToView = require('./middlewares/pass-user-to-view')
 const isSignedIn = require('./middlewares/is-signed-in')
-//
+
 // Routes requires
 const authRoutes = require('./routes/auth')
 const employeesRoutes = require('./routes/employees')
 const projectsRoutes = require('./routes/projects')
-//
+
 // Model requires
 const Project = require('./models/project')
 const Employee = require('./models/employee')
-//
+
 // app.use(express.static('public'))
 // DB Configs
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const database = require('./config/db')
-//
+
 // Middleware Configs
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
@@ -48,20 +48,13 @@ app.get('/', async (req, res) => {
   if (req.session.user) {
     const findEmployees = await Employee.find()
     const employees = findEmployees.filter((e) => {
-      // console.log(e)
       return e.hr._id.equals(req.session.user._id)
     })
 
     const findProjects = await Project.find()
     const projects = findProjects.filter((e) => {
-      // console.log(e)
       return e.hr._id.equals(req.session.user._id)
     })
-
-    // const employees = await Employee.find()
-    // const projects = await Project.find()
-    console.log(employees.length)
-    console.log(projects.length)
     res.render('hr.ejs', {
       countEmp: employees.length,
       countPro: projects.length

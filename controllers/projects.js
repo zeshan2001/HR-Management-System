@@ -5,7 +5,6 @@ exports.projects_index_get = async (req, res) => {
   try {
     const findProjects = await Project.find()
     const projects = findProjects.filter((e) => {
-      // console.log(e)
       return e.hr._id.equals(req.session.user._id)
     })
     res.render('projects/index.ejs', { projects })
@@ -17,19 +16,14 @@ exports.projects_index_get = async (req, res) => {
 exports.projects_show_get = async (req, res) => {
   try {
     const project = await Project.findById(req.params.projectId)
-    const employeesN = await Employee.find()
-    let ee = []
-
-    // This is how we got the names of employees to show up in the ejs file.
+    const employeesName = await Employee.find()
+    let employeesInProject = []
     for (let i = 0; i < project.employees.length; i++) {
-      for (let j = 0; j < employeesN.length; j++) {
-        project.employees[i]._id.equals(employeesN[j]._id)
-          ? ee.push(employeesN[j])
-          : null
+      for (let j = 0; j < employeesName.length; j++) {
+        project.employees[i]._id.equals(employeesName[j]._id)
+          ? employeesInProject.push(employeesName[j]): null
       }
     }
-    // This is how we got the names of employees to show up in the ejs file.
-
     res.render('projects/show.ejs', { project, ee })
   } catch (error) {
     console.log(error)
@@ -57,9 +51,7 @@ exports.projects_create_post = async (req, res) => {
 
 exports.projects_edit_get = async (req, res) => {
   const project = await Project.findById(req.params.projectId)
-  // branch aliii - added const employee
   const employees = await Employee.find()
-  // branch aliii - added const employee
   project.startDateFormatted = project.startDate.toISOString().split('T')[0]
   project.deadLineFormatted = project.deadLine.toISOString().split('T')[0]
   res.render(`projects/edit.ejs`, { project, employees })
@@ -83,7 +75,6 @@ exports.projects_update_put = async (req, res) => {
 exports.projects_delete_delete = async (req, res) => {
   try {
     const project = await Project.findById(req.params.projectId)
-
     if (project.hr.equals(req.session.user._id)) {
       await project.deleteOne()
       res.redirect('/projects')
