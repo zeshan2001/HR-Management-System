@@ -4,7 +4,7 @@ const Employee = require('../models/employee')
 exports.employees_index_get = async (req, res) => {
   try {
     const findEmployees = await Employee.find()
-    const employees = findEmployees.filter((employee)=> {
+    const employees = findEmployees.filter((employee) => {
       return employee.hr._id.equals(req.session.user._id)
     })
     res.render('employees/index.ejs', { employees })
@@ -32,6 +32,7 @@ exports.employees_new_get = async (req, res) => {
 
 exports.employees_create_post = async (req, res) => {
   try {
+    req.body.profilePicture = req.file.filename
     req.body.hr = req.session.user._id
     const employee = await Employee.create(req.body)
     res.redirect('/employees')

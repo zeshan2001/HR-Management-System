@@ -2,8 +2,9 @@
 
 <div class="container">
   <main class="form-signin w-50 m-auto">
-    <form action="/employees" method="post">
+    <form action="/employees" method="post" enctype="multipart/form-data">
       <h1 class="h3 mb-3 fw-normal">Add a New Employee</h1>
+      <input type="file" name="profilePicture">
       <div class="form-floating mb-4">
         <input
           type="text"
