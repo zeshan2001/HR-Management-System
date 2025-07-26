@@ -11,8 +11,7 @@
           name="projectName"
           id="floatingInput"
           class="form-control"
-          value="<%= project.projectName %>"
-        />
+          value="<%= project.projectName %>"/>
         <label for="projectName">Name: </label>
       </div>
 
@@ -22,8 +21,7 @@
           name="startDate"
           class="form-control"
           id="floatingInput"
-          value="<%= project.startDateFormatted %>"
-        />
+          value="<%= project.startDateFormatted %>"/>
         <label for="startDate">start Date: </label>
       </div>
 
@@ -33,20 +31,17 @@
           name="deadLine"
           class="form-control"
           id="floatingInput"
-          value="<%= project.deadLineFormatted %>"
-        />
+          value="<%= project.deadLineFormatted %>"/>
         <label for="deadLine">Dead line: </label>
       </div>
 
-      
       <div class="form-floating mb-4">
         <input
           type="number"
           name="budget"
           class="form-control"
           id="floatingInput"
-          value="<%= project.budget %>"
-        />
+          value="<%= project.budget %>"/>
         <label for="budget">budget: </label>
       </div>
 
@@ -69,11 +64,8 @@
             type="checkbox"
             name="employees"
             id="emp-<%= emp._id %>"
-            value="<%= emp._id %>"
-          />
-          <label class="form-check-label" for="emp-<%= emp._id %>"
-            ><%= emp.name %></label
-          >
+            value="<%= emp._id %>"/>
+          <label class="form-check-label" for="emp-<%= emp._id %>"><%= emp.name %></label>
         </div>
         <% }) %>
       </fieldset>

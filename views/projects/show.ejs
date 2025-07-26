@@ -27,7 +27,7 @@
         <td><b>Assigned to the Project</b></td>
         <td>
           <ol>
-            <% ee.forEach(employee => { %>
+            <% employeesInProject.forEach(employee => { %>
             <li><%= employee.name %></li>
             <% }) %>
           </ol>
@@ -44,8 +44,7 @@
     <form
       class=""
       action="/projects/<%= project._id %>?_method=DELETE"
-      method="post"
-    >
+      method="post">
       <button class="btn btn-primary w-100 py-2" type="submit">Delete</button>
     </form>
   </div>

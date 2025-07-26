@@ -50,7 +50,6 @@ app.get('/', async (req, res) => {
     const employees = findEmployees.filter((e) => {
       return e.hr._id.equals(req.session.user._id)
     })
-
     const findProjects = await Project.find()
     const projects = findProjects.filter((e) => {
       return e.hr._id.equals(req.session.user._id)
@@ -63,12 +62,10 @@ app.get('/', async (req, res) => {
     res.render('index.ejs')
   }
 })
-//
 // Route Configs
 app.use('/auth', authRoutes)
 app.use('/employees', isSignedIn, employeesRoutes)
 app.use('/projects', isSignedIn, projectsRoutes)
-//
 // LIVE Port
 app.listen(PORT, () => {
   console.log(`Running Server on Port ${PORT} . . . `)
