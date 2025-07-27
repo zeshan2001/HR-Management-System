@@ -4,8 +4,8 @@ const Employee = require('../models/employee')
 exports.projects_index_get = async (req, res) => {
   try {
     const findProjects = await Project.find()
-    const projects = findProjects.filter((e) => {
-      return e.hr._id.equals(req.session.user._id)
+    const projects = findProjects.filter((employee) => {
+      return employee.hr._id.equals(req.session.user._id)
     })
     res.render('projects/index.ejs', { projects })
   } catch (error) {
@@ -24,7 +24,7 @@ exports.projects_show_get = async (req, res) => {
           ? employeesInProject.push(employeesName[j]): null
       }
     }
-    res.render('projects/show.ejs', { project, ee })
+    res.render('projects/show.ejs', { project, employeesInProject })
   } catch (error) {
     console.log(error)
   }
