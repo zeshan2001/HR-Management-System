@@ -16,7 +16,11 @@ exports.employees_index_get = async (req, res) => {
 exports.employees_show_get = async (req, res) => {
   try {
     const employee = await Employee.findById(req.params.employeeId)
-    res.render('employees/show.ejs', { employee })
+    if (employee.hr.equals(req.session.user._id)) {
+      res.render('employees/show.ejs', { employee })
+    } else {
+      res.send("You don't have permission to access.")
+    }
   } catch (error) {
     console.log(error)
   }
@@ -43,14 +47,21 @@ exports.employees_create_post = async (req, res) => {
 
 exports.employees_edit_get = async (req, res) => {
   const employee = await Employee.findById(req.params.employeeId)
-  res.render(`employees/edit.ejs`, { employee })
+  if (employee.hr.equals(req.session.user._id)) {
+    res.render(`employees/edit.ejs`, { employee })
+  } else {
+    res.send("You don't have permission to access.")
+  }
 }
 
 exports.employees_update_put = async (req, res) => {
   try {
     const currentEmployee = await Employee.findById(req.params.employeeId)
+
     if (currentEmployee.hr.equals(req.session.user._id)) {
+      req.body.profilePicture = req.file.filename
       await currentEmployee.updateOne(req.body)
+      // console.log(currentEmployee)
       res.redirect(`/employees/${currentEmployee._id}`)
     } else {
       res.send("You don't have permission to do that.")
