@@ -18,10 +18,9 @@ exports.auth_signup_post = async (req, res) => {
 
   const user = await User.create(req.body)
   req.session.user = {
-    name: user.name,
-    email: user.email,
     _id: user._id,
-    role: user.role
+    email: user.email,
+    name: user.name
   }
 
   req.session.save(() => {
@@ -47,10 +46,9 @@ exports.auth_signin_post = async (req, res) => {
   }
 
   req.session.user = {
-    name: userInDatabase.name,
-    email: userInDatabase.email,
     _id: userInDatabase._id,
-    role: userInDatabase.role
+    email: userInDatabase.email,
+    name: userInDatabase.name
   }
 
   req.session.save(() => {
