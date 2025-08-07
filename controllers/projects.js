@@ -31,6 +31,7 @@ exports.projects_show_get = async (req, res) => {
     } else {
       res.send("You don't have permission to do that.")
     }
+    
   } catch (error) {
     console.log(error)
   }
