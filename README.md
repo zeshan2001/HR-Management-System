@@ -38,6 +38,10 @@ An app designed for human resources use, the goal of app is to provide the abili
 
 ### **_Screenshots_**
 
+### **_ERD:_**
+
+![ERD](./public/Screenshots/erdDiagram.png)
+
 ### **_Wireframes screenshots:_**
 
 ![Wireframes](./public/Screenshots/wireframe1.jpg)
@@ -49,10 +53,6 @@ An app designed for human resources use, the goal of app is to provide the abili
 ![Application](./public/Screenshots/appHrLandingPage.PNG)
 ![Application](./public/Screenshots/appEmpList.PNG)
 ![Application](./public/Screenshots/appEmpDetails.PNG)
-
-### **_ERD:_**
-
-![ERD](./public/Screenshots/erdDiagram.png)
 
 ---
 
